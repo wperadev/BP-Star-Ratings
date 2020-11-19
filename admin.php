@@ -164,6 +164,17 @@
 				    )
 			    )
 		    ));
+			bepassivePlugin_AdminMarkup::checkbox(array(
+				'title' => 'Only Login User Voting',
+				'description' => 'Choose Whether You Want Voting Only Login User',
+				'obj' => array(
+					array(
+						'field' => 'bpsr_only_login_user_vote',
+					    'label' => 'Only Login User Can Vote',
+					    'value' => get_option('bpsr_only_login_user_vote')
+				    )
+			    )
+		    ));
 		    bepassivePlugin_AdminMarkup::checkbox(array(
 				'title' => 'Clear line & Space Bottom',
 				'description' => 'Choose Whether You Want the Ratings to Be on Its Own Line Rather Than Floated and Space Bottom',

@@ -30,9 +30,10 @@ BP Star Ratings offers you an enhanced settings page where you can adjust litera
 * We restrict votings to per unique ip.
 * You have the option to choose placement: top left, top right, bottom left or bottom right.
 * You can easily adjust frequent messages and strings.
-* We offer the exciting option to choose your own images.
+* We offer the exciting option to enable/disable non registered user vote.
 * You can comfortably attach tooltips when mouse is hovered while rating with colors.
 * There’s the option to change the amount of stars anytime you want (Default is 5).
+* You can easily control stars size.
 * Lastly, you can reset the ratings for individual posts or the entire site.
 
 

@@ -63,13 +63,14 @@
 	outline: none;
 }
 .bp-star-ratings .bpsr-legend {
-	font-size: 12px;
+	font-size: 14px;
 	color: #999;
 	text-align: center;
 	line-height: 18px;
-	padding: 3px;
+	padding: 3px 3px 3px 10px;
 	font-weight: 700;
 	font-family: Arial, Helvetica, sans-serif;
+	float: left;
 }
 .bp-star-ratings .bpsr-legend .bpsr-title {
 	display: none;

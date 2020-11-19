@@ -120,10 +120,9 @@ if(!class_exists('bepassivePlugin_bpStarRatings')) :
             $star_style = parent::get_options('bpsr_rating_strs_style');
 
             echo '<style>';
-            echo '.bp-star-ratings .bpsr-star.gray{background-size:'.$star_h.'px '.$star_w.'px;}';
-            echo '.bp-star-ratings .bpsr-star.orange{background-size:'.$star_h.'px '.$star_w.'px;}';
-
-            echo $star_rat_leg_inline? '.bp-star-ratings {display:flex;width:250px;}' : '.bp-star-ratings {width:'.($star_w*$stars).'px;}';
+            echo '.bp-star-ratings .bpsr-star.gray{background-size:'.$star_h.'px '.$star_w.'px !important;width:'.($star_w*$stars).'px !important;}';
+            echo '.bp-star-ratings .bpsr-star.orange{background-size:'.$star_h.'px '.$star_w.'px !important;}';
+            echo $star_rat_leg_inline? '.bp-star-ratings {display:flex;width:'.($star_w*$stars+150).'px !important;}' : '.bp-star-ratings {width:'.($star_w*$stars+150).'px !important;}';
             echo '.bp-star-ratings .bpsr-stars a {width:'.($star_w).'px; height:'.($star_h).'px;}';
             echo '.bp-star-ratings .bpsr-stars, .bp-star-ratings .bpsr-stars .bpsr-fuel, .bp-star-ratings .bpsr-stars a { height:'.($star_h).'px; }';
             echo $star_style ? '.bp-star-ratings .bpsr-star.yellow { background-image: url('.plugins_url('assets/images/'.$star_style, __FILE__).'.png); background-size:'.$star_h.'px '.$star_w.'px; }' : '';
@@ -149,8 +148,9 @@ if(!class_exists('bepassivePlugin_bpStarRatings')) :
             $opt_show_in_pages = 1; // 1|0
             $opt_google_snippets = 1; // 1|0
             $opt_unique = 0; // 1|0
+            $bpsr_only_login_user_vote = 0; // 1|0
             $opt_reting_str = 'yellow_star'; // 1|0
-            $bpsr_rating_legend_inline = 0; // 1|0
+            $bpsr_rating_legend_inline = 1; // 1|0
             $opt_position = 'top-left'; // 'top-left', 'top-right', 'bottom-left', 'bottom-right'
 	        $bpsr_sufix_votes = 's'; // 's' in english for voteS
             $opt_legend = '[avg] / [best] ( [total] vote[suffix] )';
@@ -165,6 +165,7 @@ if(!class_exists('bepassivePlugin_bpStarRatings')) :
             $Options['bpsr_show_in_posts'] = isset($Old_plugin['show_in_posts']) ? $Old_plugin['show_in_posts'] : $opt_show_in_posts;
             $Options['bpsr_show_in_pages'] = isset($Old_plugin['show_in_pages']) ? $Old_plugin['show_in_pages'] : $opt_show_in_pages;
             $Options['bpsr_unique'] = isset($Old_plugin['unique']) ? $Old_plugin['unique'] : $opt_unique;
+            $Options['bpsr_only_login_user_vote'] = isset($Old_plugin['only_login_user_vote']) ? $Old_plugin['only_login_user_vote'] : $bpsr_only_login_user_vote;
             $Options['bpsr_grs'] = isset($Old_plugin['grs']) ? $Old_plugin['grs'] : $opt_google_snippets;
             $Options['bpsr_rating_strs_style'] = isset($Old_plugin['rating_strs_style']) ? $Old_plugin['rating_strs_style'] : $opt_reting_str;
             $Options['bpsr_rating_legend_inline'] = isset($Old_plugin['rating_legend_inline']) ? $Old_plugin['rating_legend_inline'] : $bpsr_rating_legend_inline;
@@ -537,9 +538,17 @@ if(!class_exists('bepassivePlugin_bpStarRatings')) :
                     <div class="bpsr-fuel bpsr-star '.($disabled ? 'orange' : 'yellow').'" style="width:0%;"></div>
                     <!-- bpsr-fuel -->';
                     $total_stars = parent::get_options('bpsr_stars');
+                    $bpsr_only_login_user_vote = parent::get_options('bpsr_only_login_user_vote');
+
                     for($ts = 1; $ts <= $total_stars; $ts++)
                     {
-                        $markup .= '<a href="#'.$ts.'"></a>';
+                        if ($bpsr_only_login_user_vote){
+                            if ( is_user_logged_in() ) {
+                                $markup .= '<a href="#'.$ts.'"></a>';
+                            }
+                        }else{
+                          $markup .= '<a href="#'.$ts.'"></a>';
+                        }
                     }
                     $markup .='
                         </div>
