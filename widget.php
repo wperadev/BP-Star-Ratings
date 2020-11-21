@@ -41,7 +41,6 @@ class bepassivePlugin_bpStarRatings_Widget extends WP_Widget
         }
         echo '</ul>';
         // OUTPUT ends
-
         echo $after_widget;
     }
     // Updates OPTIONS

@@ -204,7 +204,7 @@ if(!class_exists('bepassivePlugin_bpStarRatings')) :
                     update_post_meta($p['id'], '_bpsr_casts', $p['_bp_ratings_casts']);
                     $Ips = array();
                     $Ips = explode('|', $p['_bp_ratings_ips']);
-                    $ip = base64_encode(serialize($Ips));
+                    $ip = $Ips;
                     update_post_meta($p['id'], '_bpsr_ips', $ip);
                     update_post_meta($p['id'], '_bpsr_avg', round($p['_bp_ratings_ratings']/$p['_bp_ratings_casts'],1));
                 }
@@ -233,10 +233,9 @@ if(!class_exists('bepassivePlugin_bpStarRatings')) :
                 $Opt_tooltips[3]['tip'] = 'Good';
                 $Opt_tooltips[4]['color'] = 'green';
                 $Opt_tooltips[4]['tip'] = 'Excellent';
-                $Options['bpsr_tooltips'] = base64_encode(serialize($Opt_tooltips));
+                $Options['bpsr_tooltips'] = $Opt_tooltips;
                 parent::update_options($Options);
             }
-
             parent::update_options(array('bpsr_ver'=>$ver_current));
         }
         /** function/method
@@ -262,7 +261,7 @@ if(!class_exists('bepassivePlugin_bpStarRatings')) :
                 'General',
                 'manage_options',
                 $this->id.'_settings',
-                array(&$this, 'options_general'),
+                array(&$this, 'options_general')
             );
             // Create images menu tab
             $this->_Menus[] = add_submenu_page(
@@ -371,6 +370,8 @@ if(!class_exists('bepassivePlugin_bpStarRatings')) :
         {
             $this->options_page('info');
         }
+
+
         public function bpsr_admin_reset_ajax()
         {
             header('content-type: application/json; charset=utf-8');
@@ -429,7 +430,6 @@ if(!class_exists('bepassivePlugin_bpStarRatings')) :
             if (empty($_POST['id'])) {
                 die();
             }
-
             $Response = array();
 
             $total_stars = is_numeric(parent::get_options('bpsr_stars')) ? parent::get_options('bpsr_stars') : 5;
@@ -440,7 +440,7 @@ if(!class_exists('bepassivePlugin_bpStarRatings')) :
             // GDPR: Create SHA256 hash of ip address before storing it
             $ip = hash('sha256', $_SERVER['REMOTE_ADDR']);
 
-            $Ids = explode(',', $_POST['id']);
+            $Ids = explode(',', sanitize_text_field($_POST['id']));
 
             foreach($Ids as $pid) :
 
@@ -463,12 +463,12 @@ if(!class_exists('bepassivePlugin_bpStarRatings')) :
                 $Response[$pid]['disable'] = 'false';
                 if($stars)
                 {
-                    $Ips = get_post_meta($pid, '_bpsr_ips', true) ? unserialize(base64_decode(get_post_meta($pid, '_bpsr_ips', true))) : array();
+                    $Ips = get_post_meta($pid, '_bpsr_ips', true) ? get_post_meta($pid, '_bpsr_ips', true) : array();
                     if(!in_array($ip, $Ips))
                     {
                         $Ips[] = $ip;
                     }
-                    $ips = base64_encode(serialize($Ips));
+                    $ips = $Ips;
                     update_post_meta($pid, '_bpsr_ratings', $nratings);
                     update_post_meta($pid, '_bpsr_casts', $ncasts);
                     update_post_meta($pid, '_bpsr_ips', $ips);
@@ -517,7 +517,7 @@ if(!class_exists('bepassivePlugin_bpStarRatings')) :
             $disabled = false;
             if(get_post_meta($id, '_bpsr_ips', true))
             {
-                $Ips = unserialize(base64_decode(get_post_meta($id, '_bpsr_ips', true)));
+                $Ips = get_post_meta($id, '_bpsr_ips', true);
                 // GDPR: Create SHA256 hash of ip address before storing it
                 $ip = hash('sha256', $_SERVER['REMOTE_ADDR']);
                 if(in_array($ip, $Ips))
@@ -525,6 +525,7 @@ if(!class_exists('bepassivePlugin_bpStarRatings')) :
                     $disabled = parent::get_options('bpsr_unique') ? true : false;
                 }
             }
+
             // Check Archive and get id
             if (is_archive()) {
                 $id = get_queried_object_id();

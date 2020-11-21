@@ -30,7 +30,7 @@
             <?php
             if(isset($_POST['subscribebtn'])){
             //user posted variables
-              $email = $_POST['emailaddress'];
+              $email = sanitize_email($_POST['emailaddress']);
               $message = "New Subscribe Mail Account is: ".$email;
 
             //php mailer variables
@@ -50,9 +50,7 @@
             }
             ?>
         </div>
-
         <br><br>
-
     </div>
     <!-- bf-wrap-small -->
     <?php endif; ?>
