@@ -4,7 +4,7 @@
 Plugin Name: BP Star Ratings
 Plugin URI: https://github.com/wperadev/bp-star-ratings/
 Description: BP Star Ratings help you to animated and light weight ratings feature for your blog. With BP Star Ratings, you can <strong>allow your blog posts,pages,archives,store,product to be rated by your blog visitors</strong>. It also includes a <strong>widget</strong> which you can add to your sidebar to show the top rated post. Enjoy the extensive options you can set to customize this plugin.
-Version: 1.0
+Version: 1.1
 Author: WPEra
 Author URI: https://wpera.com/
 License: GPLv2 or later
@@ -730,21 +730,20 @@ if(!class_exists('bepassivePlugin_bpStarRatings')) :
             }
 
             $title = get_the_title($id);
+            if(empty($title)){
+                $title = "Rating ";
+            }
 
-            $snippet = '<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">';
-            $snippet .= '    <div itemprop="name" class="bpsr-title">' . $title . '</div>';
+            $snippet = '<div itemscope itemtype="https://schema.org/Product">';
+            $snippet .= '  <span itemprop="name" class="bpsr-title">' . $title . '</span>';
+            $snippet .= '  <span itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">';
             $snippet .=      $legend;
-            $snippet .= '    <meta itemprop="bestRating" content="'. $best . '"/>';
-            $snippet .= '    <meta itemprop="worstRating" content="1"/>';
-            $snippet .= '    <div itemprop="itemReviewed" itemscope itemtype="http://schema.org/CreativeWork">';
-            $snippet .= '    <!-- Product properties -->';
-            $snippet .= '    </div>';
+            $snippet .= '  </span>';
             $snippet .= '</div>';
 
             return $snippet;
         }
     }
-
     $bpStarRatings_obj = new bepassivePlugin_bpStarRatings('bepassive_plugin_bpsr', 'BP Star Ratings', '1.0');
 
     // Setup

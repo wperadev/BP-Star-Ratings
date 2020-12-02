@@ -28,7 +28,7 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="tiny_mce_popup.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/../bp-star-ratings/shortcode/mce/bpstarratings/tiny_mce_popup.js" working-dir="$PROJECT_DIR$/../bp-star-ratings/shortcode/mce/bpstarratings">
+    <configuration name="tiny_mce_popup.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/shortcode/mce/bpstarratings/tiny_mce_popup.js" working-dir="$PROJECT_DIR$/shortcode/mce/bpstarratings">
       <method v="2" />
     </configuration>
     <recent_temporary>
@@ -47,6 +47,9 @@
       <updated>1605324189473</updated>
       <workItem from="1605324190589" duration="178000" />
       <workItem from="1605324585021" duration="27515000" />
+      <workItem from="1606197380314" duration="3616000" />
+      <workItem from="1606536050832" duration="3473000" />
+      <workItem from="1606545212043" duration="3704000" />
     </task>
     <servers />
   </component>
@@ -66,10 +69,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1605324233224" />
-    <state x="1067" y="86" width="625" height="888" key="find.popup" timestamp="1605352081505">
+    <state x="1067" y="86" width="625" height="888" key="find.popup" timestamp="1606537385362">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1067" y="86" width="625" height="888" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605352081505" />
+    <state x="1067" y="86" width="625" height="888" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606537385362" />
   </component>
   <component name="WordPressConfiguration" enabled="true">
     <wordpressPath>C:\xampp\htdocs\WP_Lab</wordpressPath>

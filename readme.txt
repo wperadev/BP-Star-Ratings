@@ -1,11 +1,11 @@
 === BP Star Ratings ===
 Contributors: WPEra
-Donate link: https://www.patreon.com/bePatron?u=19773871
+Donate link: https://www.wpera.com/contact
 Tags: star ratings, votings, rate posts, ajax ratings, infinite stars, unlimited stars, store rating, product rating, archive rating, google rich snippets, wp rating
 Requires at least: 4.5
 Requires PHP: 5.6
 Tested up to: 5.5
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,8 +19,7 @@ Last but not least, BP Star Ratings also has custom template tag/function availa
 BP Star Ratings offers you an enhanced settings page where you can adjust literally anything you may need to.
 
 
-=Features=
-
+== Features ==
 * You’re free to select where you want to show the ratings such as the homepage, archives, posts, pages etc.
 * You can just press a button in your editor to display the ratings manually in your posts or pages. No more typing a shortcode :)
 * It supports Google rich snippets so the ratings will be shown in google search results :)
@@ -35,6 +34,9 @@ BP Star Ratings offers you an enhanced settings page where you can adjust litera
 * There’s the option to change the amount of stars anytime you want (Default is 5).
 * You can easily control stars size.
 * Lastly, you can reset the ratings for individual posts or the entire site.
+* Avaiable widget option.
+* Can use ShortCode as well : [bpstarratings]
+* Manually you can show BP Star Rating, use: <?php if(function_exists("bp_star_ratings")) : echo bp_star_ratings(); endif; ?>
 
 
 == Installation ==
@@ -91,3 +93,7 @@ To view the feedback for each post, you can go to the post editor (meta box) at 
 == Changelog ==
 = 1.0 =
 * Initial release
+
+= 1.1 =
+* Google rich snippets problem solve
+* Bug fixing
