@@ -1,4 +1,5 @@
 <?php
+
 /*
 Plugin Name: BP Star Ratings
 Plugin URI: https://github.com/wperadev/bp-star-ratings/
@@ -151,7 +152,7 @@ if(!class_exists('bepassivePlugin_bpStarRatings')) :
             $opt_reting_str = 'yellow_star'; // 1|0
             $bpsr_rating_legend_inline = 1; // 1|0
             $opt_position = 'top-left'; // 'top-left', 'top-right', 'bottom-left', 'bottom-right'
-	        $bpsr_sufix_votes = 's'; // 's' in english for voteS
+            $bpsr_sufix_votes = 's'; // 's' in english for voteS
             $opt_legend = '[avg] / [best] ( [total] vote[suffix] )';
             $opt_init_msg = 'Rate this post'; // string
             $opt_column = 1; // 1|0
@@ -169,18 +170,13 @@ if(!class_exists('bepassivePlugin_bpStarRatings')) :
             $Options['bpsr_rating_strs_style'] = isset($Old_plugin['rating_strs_style']) ? $Old_plugin['rating_strs_style'] : $opt_reting_str;
             $Options['bpsr_rating_legend_inline'] = isset($Old_plugin['rating_legend_inline']) ? $Old_plugin['rating_legend_inline'] : $bpsr_rating_legend_inline;
             $Options['bpsr_position'] = isset($Old_plugin['position']) ? $Old_plugin['position'] : $opt_position;
-	        $Options['bpsr_suffix_votes'] = isset($Old_plugin['bpsr_suffix_votes']) ? $Old_plugin['bpsr_suffix_votes'] : $bpsr_sufix_votes;
+            $Options['bpsr_suffix_votes'] = isset($Old_plugin['bpsr_suffix_votes']) ? $Old_plugin['bpsr_suffix_votes'] : $bpsr_sufix_votes;
             $Options['bpsr_legend'] = isset($Old_plugin['legend']) ? $Old_plugin['legend'] : $opt_legend;
             $Options['bpsr_init_msg'] = isset($Old_plugin['init_msg']) ? $Old_plugin['init_msg'] : $opt_init_msg;
             $Options['bpsr_column'] = isset($Old_plugin['column']) ? $Old_plugin['column'] : $opt_column;
 
-<<<<<<< HEAD
             // Upgrade from old plugin(<1.3)
             if(!$ver_previous || version_compare($ver_previous, '1.3', '<'))
-=======
-            // Upgrade from old plugin(<1.2)
-            if(!$ver_previous || version_compare($ver_previous, '1.2', '<'))
->>>>>>> 9d60748de8a39fb6e0803a1324729bf44ed8d9a5
             {
                 // Delete old options
                 parent::delete_options('bp-ratings');
@@ -323,7 +319,7 @@ if(!class_exists('bepassivePlugin_bpStarRatings')) :
                 //     'link' => 'https://github.com/wperadev/bp-star-ratings'
                 // ),
                 // array(
-                // 	'title' => 'Changelog',
+                //  'title' => 'Changelog',
                 //     'link' => '#'
                 // )
             );
@@ -772,7 +768,7 @@ if(!class_exists('bepassivePlugin_bpStarRatings')) :
     register_activation_hook(__FILE__, array($bpStarRatings_obj, 'activate'));
 
     //Uninstall
-	// TODO: include 'register_uninstall_hook() '
+    // TODO: include 'register_uninstall_hook() '
 
     // Scripts
     add_action('wp_enqueue_scripts', array($bpStarRatings_obj, 'js'));
