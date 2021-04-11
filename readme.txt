@@ -5,7 +5,7 @@ Tags: star ratings, votings, rate posts, ajax ratings, infinite stars, unlimited
 Requires at least: 4.5
 Requires PHP: 5.6
 Tested up to: 5.5
-Stable tag: 1.1
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -97,3 +97,16 @@ To view the feedback for each post, you can go to the post editor (meta box) at 
 = 1.1 =
 * Google rich snippets problem solve
 * Bug fixing
+
+= 1.2 =
+* Google rich snippets warning solve
+* Bug fixing
+* Optimize
+
+= 1.3 =
+* Google rich snippets update
+* Bug fixing
+
+= 1.4 =
+* Bug fixing
+* Update User Interface Design

@@ -4,7 +4,7 @@
 Plugin Name: BP Star Ratings
 Plugin URI: https://github.com/wperadev/bp-star-ratings/
 Description: BP Star Ratings help you to animated and light weight ratings feature for your blog. With BP Star Ratings, you can <strong>allow your blog posts,pages,archives,store,product to be rated by your blog visitors</strong>. It also includes a <strong>widget</strong> which you can add to your sidebar to show the top rated post. Enjoy the extensive options you can set to customize this plugin.
-Version: 1.1
+Version: 1.4
 Author: WPEra
 Author URI: https://wpera.com/
 License: GPLv2 or later
@@ -175,8 +175,8 @@ if(!class_exists('bepassivePlugin_bpStarRatings')) :
             $Options['bpsr_init_msg'] = isset($Old_plugin['init_msg']) ? $Old_plugin['init_msg'] : $opt_init_msg;
             $Options['bpsr_column'] = isset($Old_plugin['column']) ? $Old_plugin['column'] : $opt_column;
 
-            // Upgrade from old plugin(<1.0)
-            if(!$ver_previous || version_compare($ver_previous, '1.0', '<'))
+            // Upgrade from old plugin(<1.3)
+            if(!$ver_previous || version_compare($ver_previous, '1.3', '<'))
             {
                 // Delete old options
                 parent::delete_options('bp-ratings');
@@ -736,15 +736,33 @@ if(!class_exists('bepassivePlugin_bpStarRatings')) :
 
             $snippet = '<div itemscope itemtype="https://schema.org/Product">';
             $snippet .= '  <span itemprop="name" class="bpsr-title">' . $title . '</span>';
+            $snippet .= '  <link itemprop="image" href="#" />';
+            $snippet .= '  <meta itemprop="mpn" content="'.$id.'" />';
+            $snippet .= '  <meta itemprop="description" content="'.$title.'" />';
             $snippet .= '  <span itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">';
             $snippet .=      $legend;
             $snippet .= '  </span>';
+            $snippet .= '  <meta itemprop="sku" content="'.$id.'" />';
+            $snippet .= '  <div itemprop="brand" itemtype="http://schema.org/Brand" itemscope>';
+            $snippet .= '    <meta itemprop="name" content="'.$title.'" />';
+            $snippet .= '  </div>';
+            $snippet .= '  <div itemprop="review" itemtype="http://schema.org/Review" itemscope>';
+            $snippet .= '    <div itemprop="author" itemtype="http://schema.org/Person" itemscope>';
+            $snippet .= '      <meta itemprop="name" content="'.get_the_author().'" />';
+            $snippet .= '    </div>';
+            $snippet .= '  </div>';
+            $snippet .= '  <div itemprop="offers" itemtype="http://schema.org/AggregateOffer" itemscope>';
+            $snippet .= '    <meta itemprop="lowPrice" content="0" />';
+            $snippet .= '    <meta itemprop="highPrice" content="0" />';
+            $snippet .= '    <meta itemprop="offerCount" content="6" />';
+            $snippet .= '    <meta itemprop="priceCurrency" content="USD" />';
+            $snippet .= '  </div>';
             $snippet .= '</div>';
 
             return $snippet;
         }
     }
-    $bpStarRatings_obj = new bepassivePlugin_bpStarRatings('bepassive_plugin_bpsr', 'BP Star Ratings', '1.0');
+    $bpStarRatings_obj = new bepassivePlugin_bpStarRatings('bepassive_plugin_bpsr', 'BP Star Ratings', '1.4');
 
     // Setup
     register_activation_hook(__FILE__, array($bpStarRatings_obj, 'activate'));
