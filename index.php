@@ -1,5 +1,4 @@
 <?php
-
 /*
 Plugin Name: BP Star Ratings
 Plugin URI: https://github.com/wperadev/bp-star-ratings/
@@ -175,8 +174,13 @@ if(!class_exists('bepassivePlugin_bpStarRatings')) :
             $Options['bpsr_init_msg'] = isset($Old_plugin['init_msg']) ? $Old_plugin['init_msg'] : $opt_init_msg;
             $Options['bpsr_column'] = isset($Old_plugin['column']) ? $Old_plugin['column'] : $opt_column;
 
+<<<<<<< HEAD
             // Upgrade from old plugin(<1.3)
             if(!$ver_previous || version_compare($ver_previous, '1.3', '<'))
+=======
+            // Upgrade from old plugin(<1.2)
+            if(!$ver_previous || version_compare($ver_previous, '1.2', '<'))
+>>>>>>> 9d60748de8a39fb6e0803a1324729bf44ed8d9a5
             {
                 // Delete old options
                 parent::delete_options('bp-ratings');
