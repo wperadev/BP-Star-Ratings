@@ -1,7 +1,6 @@
 <div class="bepassive-framework">
     <?php if(isset($sidebar)) : ?>
 	<div class="bf-wrap-small _right">
-
         <!-- Github star -->
         <div class="bf_box">
             <a class="github-button" href="https://github.com/wperadev/bp-star-ratings" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star bepassive/bp-star-ratings on GitHub">
@@ -405,7 +404,6 @@
     <!--bf_container __help-->
 	</form>
     </div>
-
     <!-- bf-wrap -->
 </div>
 <!--bepassive-framework-->
