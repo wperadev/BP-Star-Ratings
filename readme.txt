@@ -4,8 +4,8 @@ Donate link: https://www.wpera.com/contact
 Tags: star ratings, votings, rate posts, ajax ratings, infinite stars, unlimited stars, store rating, product rating, archive rating, google rich snippets, wp rating
 Requires at least: 4.5
 Requires PHP: 5.6
-Tested up to: 5.5
-Stable tag: 1.3
+Tested up to: 5.7
+Stable tag: 4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -110,3 +110,4 @@ To view the feedback for each post, you can go to the post editor (meta box) at 
 = 1.4 =
 * Bug fixing
 * Update User Interface Design
+* More Control Option Added

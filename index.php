@@ -4,7 +4,7 @@
 Plugin Name: BP Star Ratings
 Plugin URI: https://github.com/wperadev/bp-star-ratings/
 Description: BP Star Ratings help you to animated and light weight ratings feature for your blog. With BP Star Ratings, you can <strong>allow your blog posts,pages,archives,store,product to be rated by your blog visitors</strong>. It also includes a <strong>widget</strong> which you can add to your sidebar to show the top rated post. Enjoy the extensive options you can set to customize this plugin.
-Version: 1.4
+Version: 1.5
 Author: WPEra
 Author URI: https://wpera.com/
 License: GPLv2 or later
@@ -152,7 +152,7 @@ if(!class_exists('bepassivePlugin_bpStarRatings')) :
             $opt_reting_str = 'yellow_star'; // 1|0
             $bpsr_rating_legend_inline = 1; // 1|0
             $opt_position = 'top-left'; // 'top-left', 'top-right', 'bottom-left', 'bottom-right'
-            $bpsr_sufix_votes = 's'; // 's' in english for voteS
+	        $bpsr_sufix_votes = 's'; // 's' in english for voteS
             $opt_legend = '[avg] / [best] ( [total] vote[suffix] )';
             $opt_init_msg = 'Rate this post'; // string
             $opt_column = 1; // 1|0
@@ -170,7 +170,7 @@ if(!class_exists('bepassivePlugin_bpStarRatings')) :
             $Options['bpsr_rating_strs_style'] = isset($Old_plugin['rating_strs_style']) ? $Old_plugin['rating_strs_style'] : $opt_reting_str;
             $Options['bpsr_rating_legend_inline'] = isset($Old_plugin['rating_legend_inline']) ? $Old_plugin['rating_legend_inline'] : $bpsr_rating_legend_inline;
             $Options['bpsr_position'] = isset($Old_plugin['position']) ? $Old_plugin['position'] : $opt_position;
-            $Options['bpsr_suffix_votes'] = isset($Old_plugin['bpsr_suffix_votes']) ? $Old_plugin['bpsr_suffix_votes'] : $bpsr_sufix_votes;
+	        $Options['bpsr_suffix_votes'] = isset($Old_plugin['bpsr_suffix_votes']) ? $Old_plugin['bpsr_suffix_votes'] : $bpsr_sufix_votes;
             $Options['bpsr_legend'] = isset($Old_plugin['legend']) ? $Old_plugin['legend'] : $opt_legend;
             $Options['bpsr_init_msg'] = isset($Old_plugin['init_msg']) ? $Old_plugin['init_msg'] : $opt_init_msg;
             $Options['bpsr_column'] = isset($Old_plugin['column']) ? $Old_plugin['column'] : $opt_column;
@@ -180,7 +180,6 @@ if(!class_exists('bepassivePlugin_bpStarRatings')) :
             {
                 // Delete old options
                 parent::delete_options('bp-ratings');
-
                 // Update previous ratings
                 global $wpdb;
                 $table = $wpdb->prefix . 'postmeta';
@@ -319,7 +318,7 @@ if(!class_exists('bepassivePlugin_bpStarRatings')) :
                 //     'link' => 'https://github.com/wperadev/bp-star-ratings'
                 // ),
                 // array(
-                //  'title' => 'Changelog',
+                // 	'title' => 'Changelog',
                 //     'link' => '#'
                 // )
             );
@@ -486,9 +485,7 @@ if(!class_exists('bepassivePlugin_bpStarRatings')) :
             }
 
             $Response[$pid]['success'] = true;
-
             endforeach;
-
             echo json_encode($Response);
             die();
         }
@@ -525,7 +522,6 @@ if(!class_exists('bepassivePlugin_bpStarRatings')) :
                     $disabled = parent::get_options('bpsr_unique') ? true : false;
                 }
             }
-
             // Check Archive and get id
             if (is_archive()) {
                 $id = get_queried_object_id();
@@ -768,7 +764,7 @@ if(!class_exists('bepassivePlugin_bpStarRatings')) :
     register_activation_hook(__FILE__, array($bpStarRatings_obj, 'activate'));
 
     //Uninstall
-    // TODO: include 'register_uninstall_hook() '
+	// TODO: include 'register_uninstall_hook() '
 
     // Scripts
     add_action('wp_enqueue_scripts', array($bpStarRatings_obj, 'js'));
