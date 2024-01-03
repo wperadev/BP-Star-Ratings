@@ -4,7 +4,6 @@
 (function($){
 	
 	var bf_admin_plugin_bpsr = {
-		
 		init : function()
 		{
 			jQuery(document).ready( function($){
@@ -32,7 +31,6 @@
 				return false;
 			});
 		}
-	
 	};
 	
 	bf_admin_plugin_bpsr.init();

@@ -4,7 +4,7 @@
 Plugin Name: BP Star Ratings
 Plugin URI: https://github.com/wperadev/bp-star-ratings/
 Description: BP Star Ratings help you to animated and light weight ratings feature for your blog. With BP Star Ratings, you can <strong>allow your blog posts,pages,archives,store,product to be rated by your blog visitors</strong>. It also includes a <strong>widget</strong> which you can add to your sidebar to show the top rated post. Enjoy the extensive options you can set to customize this plugin.
-Version: 1.5
+Version: 1.8
 Author: WPEra
 Author URI: https://wpera.com/
 License: GPLv2 or later

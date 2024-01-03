@@ -1,5 +1,4 @@
 <?php
-
 if(!class_exists('bepassivePlugin')) :
 
 	class bepassivePlugin
@@ -8,7 +7,6 @@ if(!class_exists('bepassivePlugin')) :
 		public $nick;
 		public $ver;
 		public $wpver;
-
 		public function __construct($id, $nick, $ver)
 		{
 			$this->id = $id;
@@ -18,36 +16,36 @@ if(!class_exists('bepassivePlugin')) :
 			$this->wpver = $wp_version;
 		}
 		/** function/method
-		* Usage: return file uri
-		* Arg(1): string
-		* Return: string
+		 * Usage: return file uri
+		 * Arg(1): string
+		 * Return: string
 		*/
 		public static function file_uri($path)
 		{
 			return plugins_url($path, dirname(__FILE__));
 		}
 		/** function/method
-		* Usage: return absoulte file path
-		* Arg(1): string
-		* Return: string
+		 * Usage: return absoulte file path
+		 * Arg(1): string
+		 * Return: string
 		*/
 		public static function file_path($path)
 		{
 			return dirname(dirname(__FILE__)).'/'.$path;
 		}
 		/** function/method
-		* Usage: get options
-		* Arg(1): key (string)
-		* Return: string
+		 * Usage: get options
+		 * Arg(1): key (string)
+		 * Return: string
 		*/
 		public static function get_options($key)
 		{
 			return get_option($key);
 		}
 		/** function/method
-		* Usage: update/save options
-		* Arg(1): array
-		* Return: void
+		 * Usage: update/save options
+		 * Arg(1): array
+		 * Return: void
 		*/
 		public static function update_options($Options)
 		{
@@ -60,18 +58,18 @@ if(!class_exists('bepassivePlugin')) :
 			}
 		}
 		/** function/method
-		* Usage: delete options
-		* Arg(1): key (string)
-		* Return: void
+		 * Usage: delete options
+		 * Arg(1): key (string)
+		 * Return: void
 		*/
 		public static function delete_options($key)
 		{
 			delete_option($key);
 		}
 		/** function/method
-		* Usage: helper for hooking js scripts
-		* Arg(6): slug (string), file (string), version (string)[optional, default: '0.1'], prerequisite (bool|array)[optional, default: false], parameters (bool|array)[optional, default: array('ajax')]
-		* Return: void
+		 * Usage: helper for hooking js scripts
+		 * Arg(6): slug (string), file (string), version (string)[optional, default: '0.1'], prerequisite (bool|array)[optional, default: false], parameters (bool|array)[optional, default: array('ajax')]
+		 * Return: void
 		*/
 		protected function enqueue_js($slug, $file, $ver = false, $prerequisite=false, $params=false, $footer = false, $json = false)
 		{
@@ -85,13 +83,15 @@ if(!class_exists('bepassivePlugin')) :
 			}	
 			wp_enqueue_script($this->id.($slug?('_'.$slug):''), $file, is_array($prerequisite)?$prerequisite:array('jquery'), $ver ? $ver : $this->ver, $footer);
 			
-			if(is_array($params) && !$json) 
+			if(is_array($params) && !$json){
 				wp_localize_script($this->id.($slug?('_'.$slug):''), str_replace('-','_',$this->id).'_'.$slug, $params);
+			}
 		}
-		/** function/method
-		* Usage: helper for hooking css scripts
-		* Arg(3): slug (string), file (string), ver (string)[optional, default: '0.1']
-		* Return: void
+		/** 
+		 * function/method
+		 * Usage: helper for hooking css scripts
+		 * Arg(3): slug (string), file (string), ver (string)[optional, default: '0.1']
+		 * Return: void
 		*/
 		protected function enqueue_css($slug, $file, $ver = false)
 		{
@@ -105,6 +105,6 @@ if(!class_exists('bepassivePlugin')) :
 		require_once 'admin/markup.class.php';
 		require_once 'admin/admin.class.php';
 	}
-
+	
 endif;
 ?>

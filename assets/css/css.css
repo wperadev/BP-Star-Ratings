@@ -7,20 +7,9 @@
 .bp-star-ratings.top-right {
 	margin-top: 3px;
 }
-.bp-star-ratings.lft {
-	/*width: 100%;*/
-	/*justify-content: flex-start;*/
-	/*align-items: flex-start;*/
-	/*flex-direction: column;*/
-	/*display: flex;*/
-}
+/*.bp-star-ratings.lft {}*/
 .bp-star-ratings.rgt{
-	/*width: 100%;*/
-	/*justify-content: flex-end;*/
-	/*align-items: flex-end;*/
-	/*flex-direction: column;*/
 	float: right;
-	/*display: flex;*/
 }
 .bp-star-ratings .bpsr-stars {
 	height: 24px;

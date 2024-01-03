@@ -26,16 +26,15 @@ if(!class_exists('bepassivePlugin_AdminMarkup')) :
     // Declare and define the class.
 	class bepassivePlugin_AdminMarkup
 	{
-		private static function _finish($html, $echo)
-		{
-			if(!$echo)
+		private static function _finish($html, $echo = true)
 			{
-				return $html;
+			    if (!$echo) {
+			        return $html;
+			    }
+			    echo $html;
+			    return true;
 			}
-			echo $html;
-			return true;
-		}
-		private static function _prepend($title='', $description='', $html='')
+	private static function _prepend($title = '', $description = '', $html = '', $echo = true)
 		{
 		    $html .= '<div class="bf_box">';
 			$html .= !empty($description) ? ('	<div class="bf_aside">' . $description . '</div>') : '';
@@ -47,7 +46,7 @@ if(!class_exists('bepassivePlugin_AdminMarkup')) :
 		    $html .= '</div>';	
 			return $html;
 		}
-		private static function _element($title='', $description='', $markup='', $echo)
+		private static function _element($title = '', $description = '', $markup = '', $echo = true)
 		{
 			$html = self::_prepend($title, $description);
 			$html .= $markup;

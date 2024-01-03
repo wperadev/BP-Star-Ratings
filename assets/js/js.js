@@ -53,7 +53,6 @@
 		});
 
 		$.fn.bpstarratings.fetch(Objs, 0, '0%', $.fn.bpstarratings.options.msg, true);
-
 		return this.each(function(){});
 
     };
@@ -159,9 +158,7 @@
 		
 		var legend = $('.bpsr-legend', obj).html(),
 			fuel = $('.bpsr-fuel', obj).css('width');
-		
 		$.fn.bpstarratings.fetch(obj, stars, fuel, legend, false);
-		
 		return false;
 	};
 
